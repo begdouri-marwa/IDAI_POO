@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std ;
+
+class Voiture{
+    private:
+  string marque ;
+  string modele ;
+  int annee ;
+  float kilometrage ;
+  float vitesse ;
+  //constructeur par defaut//
+  public:
+  Voiture(): marque("Inconnu") , modele("Inconnu") , annee(2000) ,kilometrage(0.0) ,vitesse(0.0)
+  {}
+   //constructeur avec parametres//
+  Voiture(string marque,string modele,int annee,float kilometrage,float vitesse){
+     this->marque=marque ;
+     this->modele=modele ;
+     this->annee=annee ;
+     this->kilometrage=kilometrage;
+     this->vitesse=vitesse ;
+  }
+   void accelerer(float valeur) {
+        vitesse += valeur;
+        cout << "Vitesse après accélération: " << vitesse << " km/h" << endl;
+   }
+  void freiner(float valeur) {
+        vitesse -= valeur;
+        if (vitesse < 0) {
+            vitesse = 0;
+        }
+        cout << "Vitesse après freinage: " << vitesse << " km/h" <<endl ;
+}
+
+  void afficherInfo() const {
+        cout << "Marque: " << marque << ", Modèle: " << modele << ", Année: " << annee 
+                  << ", Kilométrage: " << kilometrage << " km, Vitesse actuelle: " << vitesse << " km/h" <<endl;
+    }
+    
+     void avancer(float distance) {
+        kilometrage += distance;
+        cout << "Kilométrage après avoir avancé: " << kilometrage << " km" <<endl;
+    }
+    
+    ~Voiture() {
+        cout << "La voiture est détruite." <<endl;
+    }
