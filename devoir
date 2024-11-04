@@ -49,7 +49,7 @@ class NombreComplexe {
 
   
     bool operator<(const NombreComplexe& other) const {
-        return std::sqrt(reel * reel + imaginaire * imaginaire) < std::sqrt(other.reel * other.reel + other.imaginaire * other.imaginaire);
+        return sqrt(reel * reel + imaginaire * imaginaire) < sqrt(other.reel * other.reel + other.imaginaire * other.imaginaire);
     }
 
     bool operator>(const NombreComplexe& other) const {
@@ -73,38 +73,38 @@ int main() {
     NombreComplexe<int> b(1, -2);
     NombreComplexe<int> c(a); 
 
-    std::cout << "Nombre complexe a : ";
+    cout << "Nombre complexe a : ";
     a.afficher();
 
-    std::cout << "Nombre complexe b : ";
+    cout << "Nombre complexe b : ";
     b.afficher();
 
-    std::cout << "Nombre complexe c (copie de a) : ";
+    cout << "Nombre complexe c (copie de a) : ";
     c.afficher();
 
     
     NombreComplexe<int> somme = a + b;
-    std::cout << "Somme de a et b : ";
+    cout << "Somme de a et b : ";
     somme.afficher();
 
     NombreComplexe<int> difference = a - b;
-    std::cout << "Différence entre a et b : ";
+    cout << "Différence entre a et b : ";
     difference.afficher();
 
     NombreComplexe<int> produit = a * b;
-    std::cout << "Produit de a et b : ";
+    cout << "Produit de a et b : ";
     produit.afficher();
 
     NombreComplexe<int> quotient = a / b;
-    std::cout << "Quotient de a et b : ";
+    cout << "Quotient de a et b : ";
     quotient.afficher();
 
-    std::cout << "a == b : " << (a == b ? "Vrai" : "Faux") << std::endl;
-    std::cout << "a != b : " << (a != b ? "Vrai" : "Faux") << std::endl;
-    std::cout << "a < b : " << (a < b ? "Vrai" : "Faux") << std::endl;
-    std::cout << "a > b : " << (a > b ? "Vrai" : "Faux") << std::endl;
-    std::cout << "a <= b : " << (a <= b ? "Vrai" : "Faux") << std::endl;
-    std::cout << "a >= b : " << (a >= b ? "Vrai" : "Faux") << std::endl;
+    cout << "a == b : " << (a == b ? "Vrai" : "Faux") << endl;
+    cout << "a != b : " << (a != b ? "Vrai" : "Faux") << endl;
+    cout << "a < b : " << (a < b ? "Vrai" : "Faux") << endl;
+    cout << "a > b : " << (a > b ? "Vrai" : "Faux") << endl;
+    cout << "a <= b : " << (a <= b ? "Vrai" : "Faux") << endl;
+    cout << "a >= b : " << (a >= b ? "Vrai" : "Faux") << endl;
 
     return 0;
 };
