@@ -1,0 +1,111 @@
+#include<iostream>
+
+using namespace std ;
+template<typename T>
+class NombreComplexe {
+  private:
+    T reel;
+    T imaginaire;
+  public:
+    NombreComplexe() : reel(0) , imaginaire(0){}
+    NombreComplexe(T re , T im): reel(re) ,imaginaire(im) {}
+    NombreComplexe( NombreComplexe const&other) reel(autre.reel),imaginaire(autre.imaginaire) {}
+   void afficher(){
+      cout<<"L'expression de nombre complexe est : " ;
+      if(imaginaire<0){
+        cout<<reel<<"-"<<imaginaire<<"i" ;
+      }
+      cout<<reel<<"+"<<imaginaire<<"i" ;
+    
+    }
+    
+    NombreComplexe operator+(const NombreComplexe& other) const {
+        return NombreComplexe(reel + other.reel, imaginaire + other.imaginaire);
+    }
+
+    NombreComplexe operator-(const NombreComplexe& other) const {
+        return NombreComplexe(reel - other.reel, imaginaire - other.imaginaire);
+    }
+    NombreComplexe operator*(const NombreComplexe& other) const {
+        T r = reel * other.reel - imaginaire * other.imaginaire;
+        T i = reel * other.imaginaire + imaginaire * other.reel;
+        return NombreComplexe(r, i);
+    }
+
+    NombreComplexe operator/(const NombreComplexe& other) const {
+        T denom = other.reel * other.reel + other.imaginaire * other.imaginaire;
+        T r = (reel * other.reel + imaginaire * other.imaginaire) / denom;
+        T i = (imaginaire * other.reel - reel * other.imaginaire) / denom;
+        return NombreComplexe(r, i);
+    }
+
+    bool operator==(const NombreComplexe& other) const {
+        return (reel == other.reel && imaginaire == other.imaginaire);
+    }
+
+    bool operator!=(const NombreComplexe& other) const {
+        return !(*this == other);
+    }
+
+  
+    bool operator<(const NombreComplexe& other) const {
+        return std::sqrt(reel * reel + imaginaire * imaginaire) < std::sqrt(other.reel * other.reel + other.imaginaire * other.imaginaire);
+    }
+
+    bool operator>(const NombreComplexe& other) const {
+        return other < *this;
+    }
+
+    
+    bool operator<=(const NombreComplexe& other) const {
+        return !(*this > other);
+    }
+
+    
+    bool operator>=(const NombreComplexe& other) const {
+        return !(*this < other);
+    }
+};
+
+int main() {
+   
+    NombreComplexe<int> a(3, 4);
+    NombreComplexe<int> b(1, -2);
+    NombreComplexe<int> c(a); 
+
+    std::cout << "Nombre complexe a : ";
+    a.afficher();
+
+    std::cout << "Nombre complexe b : ";
+    b.afficher();
+
+    std::cout << "Nombre complexe c (copie de a) : ";
+    c.afficher();
+
+    
+    NombreComplexe<int> somme = a + b;
+    std::cout << "Somme de a et b : ";
+    somme.afficher();
+
+    NombreComplexe<int> difference = a - b;
+    std::cout << "Différence entre a et b : ";
+    difference.afficher();
+
+    NombreComplexe<int> produit = a * b;
+    std::cout << "Produit de a et b : ";
+    produit.afficher();
+
+    NombreComplexe<int> quotient = a / b;
+    std::cout << "Quotient de a et b : ";
+    quotient.afficher();
+
+    std::cout << "a == b : " << (a == b ? "Vrai" : "Faux") << std::endl;
+    std::cout << "a != b : " << (a != b ? "Vrai" : "Faux") << std::endl;
+    std::cout << "a < b : " << (a < b ? "Vrai" : "Faux") << std::endl;
+    std::cout << "a > b : " << (a > b ? "Vrai" : "Faux") << std::endl;
+    std::cout << "a <= b : " << (a <= b ? "Vrai" : "Faux") << std::endl;
+    std::cout << "a >= b : " << (a >= b ? "Vrai" : "Faux") << std::endl;
+
+    return 0;
+};
+
